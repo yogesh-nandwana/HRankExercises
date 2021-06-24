@@ -15,6 +15,10 @@ public class RepeatedString {
 		
 		count = repeatedString("a", 1000000000000L);
 		assertTrue("count:"+count,count==1000000000000L);
+		
+		//negative test case
+		count = repeatedString("x", 970770);
+		assertTrue("count:"+count,count==0);
 	}
 	
 	/*
@@ -26,23 +30,28 @@ public class RepeatedString {
      *  2. LONG_INTEGER n
      */
     public static long repeatedString(String s, long n) {
-    	if(s.length()==1) {
-    		return n;
-    	}
-        while(s.length()<n){
-            s = s.concat(s);  
-        } //concat until result string is of size n
-        if(s.length()>n){ // if resultant string size > n
-            s = s.substring(0, (int)n); // extract desired string of size n    
-        }        
-        //now count a's occurances in s
-        long count = 0;
-        char[] charArray = s.toCharArray();
-        for(int i=0;i<charArray.length;i++) {
-        	if(charArray[i]=='a') {
-        		count++;
+    	if(!s.contains("a")) {
+    		return 0;
+    	}else {
+    		if(s.length()==1 && s.equals("a")) {
+        		return n;
         	}
-        }
-        return count;
+    		
+    		while(s.length()<n){
+                s = s.concat(s);  
+            } //concat until result string is of size n
+            if(s.length()>n){ // if resultant string size > n
+                s = s.substring(0, (int)n); // extract desired string of size n    
+            }        
+            //now count a's occurances in s
+            long count = 0;
+            char[] charArray = s.toCharArray();
+            for(int i=0;i<charArray.length;i++) {
+            	if(charArray[i]=='a') {
+            		count++;
+            	}
+            }
+            return count;
+    	}                
     }
 }

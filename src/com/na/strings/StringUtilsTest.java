@@ -35,4 +35,14 @@ class StringUtilsTest {
 	void testIsPalindromSuccess() {
 		assertThat(StringUtils.isPalindrom("bcdcb"),is(true));
 	}
+	
+	@Test
+	void testIsPalindromNullString() {
+		assertThat(StringUtils.isPalindrom(null),is(true));
+	}
+	
+	@Test
+	void testIsPalindromEmptyString() {
+		assertThat(StringUtils.isPalindrom(""),is(true));
+	}
 }

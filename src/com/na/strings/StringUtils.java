@@ -3,11 +3,14 @@ package com.na.strings;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class StringUtils {
-	private StringUtils() {}
+public final class StringUtils {
+	private StringUtils() {
+		new AssertionError("No com.na.strings.StringUtils instances for you!");
+	}
 	
 	public static Set<String> substrings(final String str,final Set<String> substrList){
-		Objects.requireNonNull(str, "Input string is null!");
+		
+		assert Objects.nonNull(str):"Input string is null!";
 		System.out.println("finding substrings for:"+str);
 		for(int beginIndex=0;beginIndex<str.length()-1;beginIndex++) {
 			List<String> substrs = new ArrayList<String>();
@@ -33,7 +36,8 @@ public class StringUtils {
 	}
 
 	public static boolean isPalindrom(final String str) {
-		Objects.requireNonNull(str, "Input string is null!");
+		assert Objects.nonNull(str):"Input string is null!";
+		assert str.trim().length()>0:"Input string is empty!";
 		boolean palindrom = true;
 		char[] charArray = str.toCharArray();
 		int beginIndex=0,endIndex = charArray.length-1;

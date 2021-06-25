@@ -1,4 +1,4 @@
-package com.na.test;
+package com.na.threads;
 
 import java.util.Random;
 import java.util.logging.Level;

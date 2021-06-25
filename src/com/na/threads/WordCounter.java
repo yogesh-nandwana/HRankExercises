@@ -1,4 +1,4 @@
-package com.na.test;
+package com.na.threads;
 
 import java.io.File;
 import java.io.FileFilter;
